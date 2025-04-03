@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,11 +18,13 @@ public class Member {
     @Column(name="member_id") // 실제 컬럼명 지정
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Embedded // address 라는 별도의 값 타입 클래스
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     // 한 명 회원이 여러 개 주문 가질 수 있음.
     // order 엔터티에서 member 필드로 관계를 매핑.
