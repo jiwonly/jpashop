@@ -9,7 +9,6 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
     properties:
       hibernate:
        #show_sql: true # system.out을 통해 출력
